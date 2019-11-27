@@ -17,7 +17,7 @@ module.exports = {
 
     
             if (await User.findOne({email: email }))
-                return res.status(200).send({error: 'Usuário já existe'})
+                return res.status(200).send({error: 'Email já cadastrado'})
     
             const user = await User.create({
                 name,
@@ -49,6 +49,10 @@ module.exports = {
     async update(req, res){
         const {id, name, email, password} = req.body;
         if (await User.findOne({_id: id })){
+
+            if (await User.findOne({email: email }))
+                return res.status(200).send({error: 'Email já cadastrado'})
+
             const hash = await bcrypt.hash(password, 10);
 
             const user = await User.updateOne({_id: id}, { 
