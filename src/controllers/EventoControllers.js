@@ -12,13 +12,13 @@ module.exports = {
     },
 
     async create(req, res){
-        const {user_id, descricao, workspace_id, dt_hr_inicial, dt_hr_final} = req.body;
+        const {user_id, title, workspace_id, dt_hr_inicial, dt_hr_final} = req.body;
 
         if (await User.findOne({_id: user_id })){
 
             const evento = await Evento.create({
                 user_id,
-                descricao,
+                title,
                 workspace_id,
                 dt_hr_inicial,
                 dt_hr_final,
@@ -33,13 +33,13 @@ module.exports = {
     },
 
     async update(req, res){
-        const {id, descricao, dt_hr_inicial, dt_hr_final} = req.body;
+        const {id, title, dt_hr_inicial, dt_hr_final} = req.body;
 
         if (await Evento.findOne({_id: id })){
 
             const evento = await Evento.updateOne({_id: id}, { 
                 $set: {
-                    descricao,
+                    title,
                     dt_hr_inicial,
                     dt_hr_final,
                 }
