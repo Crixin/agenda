@@ -23,33 +23,41 @@ module.exports = {
                 dt_hr_inicial,
                 dt_hr_final,
             }).catch( err =>{
-                return res.status(400).send({error: err})
+                return res.status(200).send({error: err})
             });
             
             return res.send({evento});
         }else{
-            return res.status(400).send({error: 'Usuário não existe'})
+            return res.status(200).send({error: 'Usuário não existe'})
         }
     },
 
     async update(req, res){
-        const {id, title, dt_hr_inicial, dt_hr_final} = req.body;
+        const {id, title, dt_hr_inicial, dt_hr_final, workspace_id} = req.body;
 
-        if (await Evento.findOne({_id: id })){
+        if (await Evento.findOne({_id: id})){
 
             const evento = await Evento.updateOne({_id: id}, { 
                 $set: {
                     title,
+                    workspace_id,
                     dt_hr_inicial,
                     dt_hr_final,
                 }
             }).catch( err =>{
-                return res.status(400).send({error: err})
+                return res.status(200).send({error: err})
             });
             
             return res.send({evento});
         }else{
-            return res.status(400).send({error: 'Evento não existe'})
+            return res.status(200).send({error: 'Evento não existe'})
         }
+    },
+
+    async delete(req, res){
+        const {id} = req.body;
+        await Evento.findOneAndRemove({_id: id});
+        return res.send({id});
     }
+
 };

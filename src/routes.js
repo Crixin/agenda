@@ -22,6 +22,8 @@ routes.post('/workspace/login', WorkspaceController.login);
 routes.get('/evento/:workspace_id', EventoController.index);
 routes.post('/evento/create', EventoController.create);
 routes.post('/evento/update', EventoController.update);
+routes.post('/evento/delete', EventoController.delete);
+
 
 
 
