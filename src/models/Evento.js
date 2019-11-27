@@ -5,8 +5,8 @@ const EventoSchema = new mongoose.Schema({
     user_id: {type: Number, required: true},
     descricao: {type: String, required: true},
     workspace_id: {type: Number, required: true},
-    dt_hr_inicial: {type: Date, required: true},
-    dt_hr_final: {type: Date, required: true},
+    dt_hr_inicial: {type: String, required: true},
+    dt_hr_final: {type: String, required: true},
 }, {
     timestamps: true,
 });

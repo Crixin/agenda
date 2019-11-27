@@ -4,9 +4,9 @@ const User = require('../models/User');
 module.exports = {
 
     async index(req, res){
-        const {id} = req.body;
+        const {workspace_id} = req.params;
         
-        const eventos = await ((id) ? Evento.find({"_id": id} ) : Evento.find())
+        const eventos = await ((workspace_id) ? Evento.find({"workspace_id": workspace_id} ) : Evento.find())
 
         return res.json(eventos);
     },

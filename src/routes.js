@@ -19,7 +19,7 @@ routes.post('/workspace/login', WorkspaceController.login);
 
 
 //Evento
-routes.get('/evento', EventoController.index);
+routes.get('/evento/:workspace_id', EventoController.index);
 routes.post('/evento/create', EventoController.create);
 routes.post('/evento/update', EventoController.update);
 
