@@ -7,12 +7,16 @@ const WorkspaceController = require('./controllers/WorkspaceControllers');
 const EventoController = require('./controllers/EventoControllers');
 
 //User
-routes.get('/user', UserController.index);
+routes.get('/user/:id', UserController.index);
 routes.post('/user/register', UserController.create);
+routes.post('/user/login', UserController.login);
+routes.post('/user/update', UserController.update);
 
 //Workspace
 routes.get('/workspace', WorkspaceController.index);
 routes.post('/workspace/create', WorkspaceController.create);
+routes.post('/workspace/login', WorkspaceController.login);
+
 
 //Evento
 routes.get('/evento', EventoController.index);
